@@ -2,10 +2,35 @@
 <html>
 <head>
 	<title>Hello, World!</title>
+
+	<script type="text/javascript">
+  	var nombre= "Escarlin Moran";
+  	var cont=0;
+  	console.log(nombre);
+
+  	function ciclo(x){
+  		//for (var i = 1; i <= hasta; i++) {
+  			cont=(x+1)*(x/2);
+  			console.log(cont);
+  		
+  	//}
+  	};
+
+  	function recorrer(){
+  		var numero=document.getElementById("numero").value;
+  		ciclo(numero);
+
+  	};
+  	ciclo(1000000000000);
+  	console.log(cont);
+  </script>
 </head>
 <body>
 
   Hola Escarlin
 
+  <input id="numero">
+  <button onclick="recorrer();">Correr</button>
+  
 </body>
 </html>
