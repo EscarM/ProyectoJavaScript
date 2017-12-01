@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Estudiantes</title>
+    <script src="resources/scripts/estudiantes.js"></script>
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div style="margin-left: 30%; margin-right: 30%; margin-top: 10px">
+      <div  class="panel panel-primary">
+        <div class="panel-heading">Registro de estudiantes</div>
+          <form>
+            <div class="form-group">
+              <label>ID</label>
+              <input placeholder="Id" id="id" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Nombre</label>
+              <input placeholder="Nombre" id="nombre" class="form-control">
+            </div>
+            <div class="form-group">
+              <label >Matricula</label>
+              <input placeholder="Matricula" id="matricula" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Identificacion</label>
+              <input id="identificacion" placeholder="Identificacion" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Telefono</label>
+              <input id="telefono" placeholder="Telefono" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input id="email" placeholder="Email" class="form-control">
+            </div>
+              <br>
+          </form>
+            <div class="panel-footer" align="center">
+              <button class="btn btn-primary" onclick="recorrer();">Agregar</button>
+            </div>
+        </div>
+              <br>
+            <div>
+              <table id="estudiantes" border="1" class="table">
+                <tr>
+                  <td>Id</td>
+                  <td>Nombre</td>
+                  <td>Matricula</td>
+                  <td>Identificacion</td>
+                  <td>Telefono</td>
+                  <td>Email</td>
+                </tr>
+              </table>
+            </div>
+    </div>
+ </body>
+</html>
