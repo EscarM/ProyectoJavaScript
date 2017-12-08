@@ -2,11 +2,12 @@
 <html>
   <head>
     <title>Estudiantes</title>
-    <script src="resources/scripts/estudiantes.js"></script>
+     <script src="resources/scripts/jquery-3.2.1.min.js"></script>
+    <script src="resources/scripts/estudiantesn.js"></script>
     <link rel="stylesheet" href="resources/css/bootstrap.min.css">
   </head>
   <body>
-    <div style="margin-left: 30%; margin-right: 30%; margin-top: 10px">
+    <div style="margin-left: 30%; margin-right: 30%; margin-top: 10px;">
       <div  class="panel panel-primary">
         <div class="panel-heading">Registro de estudiantes</div>
           <form>
@@ -35,15 +36,17 @@
               <input id="email" placeholder="Email" class="form-control">
             </div>
               <br>
-          </form>
-            <div class="panel-footer" align="center">
-              <button class="btn btn-primary" onclick="recorrer();">Agregar</button>
+              <div class="panel-footer" align="center">
+              <button id="agregarestudiante" type="reset" class="btn btn-success">Agregar</button>
             </div>
+          </form>
+            
         </div>
               <br>
             <div>
               <table id="estudiantes" border="1" class="table">
                 <tr>
+                  <td></td>
                   <td>Id</td>
                   <td>Nombre</td>
                   <td>Matricula</td>
@@ -52,6 +55,11 @@
                   <td>Email</td>
                 </tr>
               </table>
+
+              <div align="center">
+              <button id="eliminarestudiante" class="btn btn-danger">Eliminar</button>
+             </div>
+
             </div>
     </div>
  </body>

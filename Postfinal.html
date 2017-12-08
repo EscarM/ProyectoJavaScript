@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prueba</title>
+     <script src="resources/scripts/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/css/bootstrap.css">
+
+    <script>
+    var listausuario=[];
+    var Post= function(){
+    var self=this;
+    self.userId;
+    self.id;
+    self.title;
+    self.body;
+
+    };
+
+    var User= function(){
+    var self=this;
+    self.id;
+    self.name;
+    self.username;
+    self.email;
+
+    };
+
+     function agregarpost(pos){
+      var rowPost="<tr>"+"<td>"+"<div class='panel panel-info'>"
+      +"<div class='panel-heading'>"+"<favorite-star></favorite-star>"+"<a href=''>"+pos.title+"</a>"+"</div>"
+      +"<div class='panel-body'>"+pos.body+"</div>"
+      +"<div class='panel-footer'>"+pos.userId+"</div>"+
+      "</div>"+"</td>"+"</tr>";
+
+      $("table tbody").append(rowPost);
+    };
+
+    function guardarDb(usuario){
+    var usuarios=[];
+    myStorage=window.localStorage;
+    var dbUsuarios= myStorage.getItem("usuarios");
+    if(dbUsuarios !=null){
+      usuarios= JSON.parse(dbUsuarios)}
+      usuarios.push(usuario);
+      myStorage.setItem("usuarios",JSON.stringify(usuarios));
+  };
+
+  $(document).ready(function (){
+
+      var root = 'https://jsonplaceholder.typicode.com';
+      $.ajax({
+        url: root + '/posts',
+        method: 'GET'
+      }).then(function(data) {
+
+        $.each(data,function(i,pos){
+            agregarpost(pos);
+            });
+          
+        });  
+
+        $.ajax({
+        url: root + '/users',
+        method: 'GET'
+      }).then(function(data) {
+
+        $.each(data,function(i,user){
+            guardarDb(user);
+            });
+          
+        });                 
+        
+      });
+
+      
+    </script>
+  </head>
+  <body>
+    <form>
+    <div class="panel panel-primary">
+    <div class="panel-heading">POSTS</div>
+      <div style="margin-left: 10%; margin-right: 10%; margin-top: 70px;">
+      <table>
+       <tr>
+         
+       </tr>
+        
+      </table>
+      </div>
+      </div>
+    </form>
+  </body
+</html>
