@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Posts</title>
+  <script src="resources/scripts/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+  <link rel="stylesheet" href="resources/css/bootstrap.css">
+
+  <script>
+    var listausuario=[];
+    var post= function(){
+      var self=this;
+      self.userId;
+      self.id;
+      self.title;
+      self.body;
+
+    };
+
+    var user= function(){
+      var self=this;
+      self.id;
+      self.name;
+      self.username;
+      self.email;
+
+    };
+
+    function agregarPost(post){
+      var rowPost="<tr>"+"<td>"+"<div class='panel panel-info'>"
+      +"<div class='panel-heading'>"+"<input type='checkbox' value='"+post.id+"'>"+"<a href='#'>"+post.title+"</a>"+"</div>"
+      +"<div class='panel-body'>"+post.body+"</div>"
+      +"<div class='panel-footer'>"+post.userId+"</div>"+
+      "</div>"+"</td>"+"</tr>";
+
+      $("table tbody").append(rowPost);
+    };
+
+    function guardarDb(usuario){
+      var usuarios=[];
+      myStorage=window.localStorage;
+      var dbUsuarios= myStorage.getItem("usuarios");
+      if(dbUsuarios !=null){
+        usuarios= JSON.parse(dbUsuarios)}
+        usuarios.push(usuario);
+        myStorage.setItem("usuarios",JSON.stringify(usuarios));
+      };
+
+      function guardarFv(postsfv){
+        var postfv=[];
+        myStorage=window.localStorage;
+        var dbfavoritos= myStorage.getItem("favoritos");
+        if(dbfavoritos !=null){
+          postfv= JSON.parse(dbfavoritos)}
+          postfv.push(postsfv);
+          myStorage.setItem("favoritos",JSON.stringify(postfv));
+        };
+        
+
+        $(document).ready(function (){
+
+          var root = 'https://jsonplaceholder.typicode.com';
+          $.ajax({
+            url: root + '/posts',
+            method: 'GET'
+          }).then(function(data) {
+
+            $.each(data,function(i,post){
+              agregarPost(post);
+            });
+            
+          });  
+
+          $.ajax({
+            url: root + '/users',
+            method: 'GET'
+          }).then(function(data) {
+
+            $.each(data,function(i,user){
+              guardarDb(user);
+            });
+            
+          });  
+
+          $('input:checked').each(function () {
+            if ($(this).is(':checked')) {
+              var idpost = ($(this).val());
+              guardarFv(idpost);
+            }
+            
+          });               
+          
+        });
+
+        
+      </script>
+    </head>
+    <body>
+      <form>
+        <div class="panel panel-primary">
+          <div class="panel-heading">POSTS</div>
+          <div style="margin-left: 10%; margin-right: 10%; margin-top: 70px;">
+            <table>
+             <tr>
+               
+             </tr>
+             
+           </table>
+         </div>
+       </div>
+     </form>
+     </body
+     </html>
